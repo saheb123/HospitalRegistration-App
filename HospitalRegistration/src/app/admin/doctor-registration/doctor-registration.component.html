@@ -1,0 +1,92 @@
+<p>doctor-registration works!</p>
+
+<div class="container">
+<form class="g-3" [formGroup]="docForm" (ngSubmit)="saveDoctor()">
+<div class="row">
+<div class="col-md-4">
+<label class="form-label" for="validationServer01">Name</label>
+<input type="text" [ngClass]="docForm.controls['name']?.errors?.['required'] && docForm.controls['name']?.touched?'form-control is-invalid':'form-control is-valid'" id="validationServer01" formControlName="name">
+<div *ngIf="docForm.controls['name'].errors?.['required'] && docForm.controls['name'].touched">
+    <span class="text-danger">Please Enter a  Name.</span>
+</div>
+</div>
+    <div class="col-md-4">
+        <label class="form-label" for="validationServer01">Specialist</label>
+        <input type="text" [ngClass]="docForm.controls['specialist']?.errors?.['required'] && docForm.controls['specialist']?.touched ?'form-control is-invalid':'form-control is-valid'" id="validationServer01" formControlName="specialist">
+        <div *ngIf="docForm.controls['specialist'].errors?.['required'] && docForm.controls['specialist'].touched">
+            <span class="text-danger">
+                Please enter a specialist
+            </span>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label class="form-label" for="validationServer01">Timings</label>
+        <input type="text" [ngClass]="docForm.controls['timings']?.errors?.['required'] && docForm.controls['timings']?.touched ?'form-control is-invalid':'form-control is-valid'" id="validationServer01" formControlName="timings">
+        <div *ngIf="docForm.controls['timings'].errors?.['required'] && docForm.controls['timings'].touched">
+            <span class="text-danger">
+                Please enter a timing
+            </span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <label class="form-label" for="validationServer01">Date</label>
+          <input type="date"
+          placeholder="Datepicker"
+          class="form-control"
+          id="validationServer01" formControlName="date"
+          >
+    </div>
+    <div class="col-md-4">
+        <label class="form-label" for="validationServer01">Mobile</label>
+        <input type="text" [ngClass]="docForm.controls['mobile']?.errors?.['required'] && docForm.controls['mobile']?.touched ?'form-control is-invalid':'form-control is-valid'" id="validationServer01" formControlName="mobile">
+        <div *ngIf="docForm.controls['mobile'].errors?.['required'] && docForm.controls['mobile'].touched">
+            <span class="text-danger">
+                Please enter a Mobile
+            </span>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label class="form-label" for="validationServer01">Fees</label>
+        <input type="text" [ngClass]="docForm.controls['fees']?.errors?.['required'] && docForm.controls['fees']?.touched ?'form-control is-invalid':'form-control is-valid'" id="validationServer01" formControlName="fees">
+        <div *ngIf="docForm.controls['fees'].errors?.['required'] && docForm.controls['fees'].touched">
+            <span class="text-danger">
+                Please enter a Fees
+            </span>
+        </div>
+    </div>
+ </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label class="form-label" for="validationServer01">Departments</label>
+           <select class="form-control" formControlName="departmentId">
+            <option value="">Choose Your Department</option>
+            <option *ngFor="let dept of departments" [value]="dept.id">{{dept.name}}</option>
+           </select>
+        </div>
+        <div class="col-md-2 mt-5">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" name="IsActive" formControlName="isActive">
+                <label class="form-check-label" for="invalidCheck">
+                  Is Active
+                </label>
+              </div>
+          </div>
+          <div class="col-md-2 mt-5">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" name="IsAvailable" formControlName="isAvailable">
+                <label class="form-check-label" for="invalidCheck">
+                  Is Available
+                </label>
+              </div>
+          </div>
+          <div class="col-md-4 pt-4">
+            <button class="btn btn-primary" type="submit">Submit form</button>
+          </div>
+    </div>
+   
+
+
+ </form> 
+</div>

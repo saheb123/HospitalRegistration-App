@@ -1,0 +1,72 @@
+<p>Employee Registration</p>
+
+<div class="container">
+    <form class="g-3" [formGroup]="empForm" (ngSubmit)="saveEmployee()" >
+        <div class="row">
+            <div class="col-md-4">
+                <label for="validationServer01" class="form-label">User Name</label>
+                <input type="text" [ngClass]="empForm.controls['userName'].errors?.['required'] && empForm.controls['userName'].touched ?'form-control is-invalid':'form-control is-valid'" id="validationServer01" value="Mark" formControlName="userName" >
+                <div *ngIf="empForm.controls['userName'].errors?.['required'] && empForm.controls['userName'].touched">
+                  <span class="text-danger">Please Enter a user Name.</span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="validationServer02" class="form-label">Mobile</label>
+                <input type="text" [ngClass]="empForm.controls['mobile'].errors?.['required'] && empForm.controls['mobile'].touched ?'form-control is-invalid':'form-control is-valid'" id="validationServer01" formControlName="mobile"  id="validationServer02"  >
+                <div *ngIf="empForm.controls['mobile'].errors?.['required'] && empForm.controls['mobile'].touched">
+                  <span class="text-danger">Please Enter a mobile no.</span>
+                </div>
+                <div *ngIf="empForm.controls['mobile']?.errors?.['pattern'] && empForm.controls['mobile'].touched">
+                    <span class="text-danger">Please Enter a valid mobile No.</span>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                <label for="validationServerUsername" class="form-label">Email</label>
+               
+                 
+                  <input type="text"  [ngClass]="empForm.controls['emailId'].errors?.['required'] && empForm.controls['emailId'].touched ?'form-control is-invalid':'form-control is-valid'" id="validationServer01" value="Mark" formControlName="emailId" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" >
+                  <div *ngIf="empForm.controls['emailId'].errors?.['required'] && empForm.controls['emailId'].touched">
+                    <span class="text-danger">Please Enter a Email Id.</span>
+                  </div>
+                  <div *ngIf="empForm.controls['emailId']?.errors?.['email'] && empForm.controls['emailId'].touched">
+                    <span class="text-danger">Please Enter a valid email.</span>
+                  </div>
+                
+              </div>
+              
+        </div>
+        <div class="row">
+           
+       <div class="col-md-4">
+        <label for="validationServer08" class="form-label">Password</label>
+    <input type="password" class="form-control is-invalid" id="validationServer06"   aria-describedby="validationServer06Feedback" [ngClass]="empForm.controls['password'].errors?.['required'] && empForm.controls['password']?.touched ?'form-control is-invalid':'form-control is-valid'" formControlName="password" class="form-control" id="exampleInputPassword1">
+    <div *ngIf="empForm.controls['password']?.errors?.['required'] && empForm.controls['password'].touched">
+        <span class="text-danger">Please enter a Password.</span>
+      </div>
+     
+     
+    
+    </div>
+    <div class="col-md-4">
+        <label for="validationServer02" class="form-label">Adhar Card No</label>
+        <input type="text" [ngClass]="empForm.controls['adharCardNo'].errors?.['required'] && empForm.controls['adharCardNo'].touched ?'form-control is-invalid':'form-control is-valid'" id="validationServer01" formControlName="adharCardNo"  id="validationServer02"  >
+        <div *ngIf="empForm.controls['adharCardNo'].errors?.['required'] && empForm.controls['adharCardNo'].touched">
+          <span class="text-danger">Please Enter a Adhar Card No.</span>
+        </div>
+      </div>
+      <div class="col-md-4 mt-5">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" name="isActive" formControlName="isActive">
+            <label class="form-check-label" for="invalidCheck">
+              Is Active
+            </label>
+          </div>
+      </div>
+      <div class="col-12 mt-2">
+        <button class="btn btn-primary" type="submit">Submit form</button>
+      </div>
+      </div>
+       
+       
+      </form>
+</div>

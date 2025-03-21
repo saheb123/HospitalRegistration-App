@@ -1,0 +1,97 @@
+
+
+<div class="container">
+<form class="g-3" [formGroup]="patForm" (ngSubmit)="savePatient()">
+<div class="row">
+<div class="col-md-4">
+<label class="form-label" for="validationServer01">Patient Name</label>
+<input type="text" [ngClass]="patForm.controls['PatientName']?.errors?.['required'] && patForm.controls['PatientName']?.touched?'form-control is-invalid':'form-control is-valid'" id="validationServer01" formControlName="PatientName">
+<div *ngIf="patForm.controls['PatientName'].errors?.['required'] && patForm.controls['PatientName'].touched">
+    <span class="text-danger">Please Enter a  Patient Name.</span>
+</div>
+</div>
+<div class="col-md-4">
+    <label class="form-label" for="validationServer01">Mobile</label>
+    <input type="text" [ngClass]="patForm.controls['Mobile']?.errors?.['required'] && patForm.controls['Mobile']?.touched ?'form-control is-invalid':'form-control is-valid'" id="validationServer01" formControlName="Mobile">
+    <div *ngIf="patForm.controls['Mobile'].errors?.['required'] && patForm.controls['Mobile'].touched">
+        <span class="text-danger">
+            Please enter a Mobile
+        </span>
+    </div>
+</div>
+    <div class="col-md-4">
+        <label class="form-label" for="validationServer01">Gender</label>
+        <div class="form-check">
+            <input class="form-check-input" formControlName="Gender"  type="radio" value="M" id="flexRadioDefault1" >
+            <label class="form-check-label" for="flexCheckDefault">
+              Male
+            </label>
+        </div>
+          <div class="form-check">
+            <input class="form-check-input" formControlName="Gender"  type="radio" value="F" id="flexRadioDefault2" >
+            <label class="form-check-label" for="flexCheckChecked">
+              Female
+            </label>
+        </div>
+    </div>
+    </div>
+<div class="row">
+    <div class="col-md-4">
+        <label class="form-label" for="validationServer01">Reason To Visit</label>
+        <input type="text" [ngClass]="patForm.controls['ReasonToVisit']?.errors?.['required'] && patForm.controls['ReasonToVisit']?.touched ?'form-control is-invalid':'form-control is-valid'" id="validationServer01" formControlName="ReasonToVisit">
+        <div *ngIf="patForm.controls['ReasonToVisit'].errors?.['required'] && patForm.controls['ReasonToVisit'].touched">
+            <span class="text-danger">
+                Please enter a Reason to visit
+            </span>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label class="form-label" for="validationServer01">Doctor</label>
+          <select class="form-control" formControlName="DoctorId">
+            <option value="">Choose your Doctor</option>
+            <option *ngFor="let doc of doctor" [value]="doc.id">{{doc.name}}</option>
+          </select>
+    </div>
+    <div class="col-md-4">
+        <label class="form-label" for="validationServer01">Fees</label>
+        <input type="text" [ngClass]="patForm.controls['Fees']?.errors?.['required'] && patForm.controls['Fees']?.touched ?'form-control is-invalid':'form-control is-valid'" id="validationServer01" formControlName="Fees">
+        <div *ngIf="patForm.controls['Fees'].errors?.['required'] && patForm.controls['Fees'].touched">
+            <span class="text-danger">
+                Please enter a Fees
+            </span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    
+    <div class="col-md-4">
+        <label class="form-label" for="validationServer01">Employee</label>
+          <select class="form-control" formControlName="EmpId">
+            <option value="">Choose your Employee</option>
+            <option *ngFor="let emp of employees" [value]="emp.empId">{{emp.userName}}</option>
+          </select>
+    </div>
+    
+   
+    <div class="col-md-4">
+        <label class="form-label" for="validationServer01">Prescription</label>
+        <textarea [ngClass]="'form-control is-valid'" formControlName="Prescription">
+
+        </textarea>
+    </div>
+    <div class="col-md-4">
+        <label class="form-label" for="validationServer01">Departments</label>
+       <select class="form-control" formControlName="deptid">
+        <option value="">Choose Your Department</option>
+        <option *ngFor="let dept of departments" [value]="dept.id">{{dept.name}}</option>
+       </select>
+    </div>
+    <div class="row">
+        <div class="col-md-4 pt-4">
+            <button class="btn btn-primary" type="submit">Submit form</button>
+          </div>
+    </div>
+    
+ </div>
+ </form> 
+</div>

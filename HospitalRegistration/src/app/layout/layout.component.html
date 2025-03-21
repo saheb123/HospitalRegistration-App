@@ -1,0 +1,61 @@
+
+<div class="container mt-3">
+  <div *ngIf="username | async">
+    Logged in as: {{ username }}
+  </div>
+    <!-- Nav pills -->
+    <!-- <ul class="nav nav-pills" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-bs-toggle="pill" routerLink="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="pill" [routerLink]="['/about',1,'Ravi']">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="pill" routerLink="/contact">Contact</a>
+      </li>
+    </ul> -->
+@if(adminRoleAccess=="admin" ||employeeRoleAccess=="emp" || doctorRoleAccess=="doctor"){
+  <nav class="navbar navbar-expand-sm bg-light" >
+    <div class="container-fluid">
+      <ul class="navbar-nav">
+      @if(adminRoleAccess=="admin"){
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/employee"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Employee</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/doctor" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Doctor</a>
+        </li>
+      }
+      @if(employeeRoleAccess=="emp"){
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/patientRegistration/employee" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Patient Registration</a>
+        </li>
+      }
+       @if(doctorRoleAccess=="doctor"){
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/patientRegistration/doctor" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Patient List</a>
+        </li>
+       }
+       
+     
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="logOut()" >Log Out</button>
+      </form>
+    </div>
+  </nav>
+}
+  
+
+
+ 
+   
+    <!-- Tab panes -->
+    <div class="tab-content">
+        
+     <router-outlet></router-outlet>
+     
+
+    </div>
+</div>

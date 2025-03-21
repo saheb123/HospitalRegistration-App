@@ -1,0 +1,15 @@
+<!-- <app-employee-registration></app-employee-registration>
+<br>
+<app-doctor-registration></app-doctor-registration>
+<app-public></app-public> -->
+@if(AuthDetails=="true"){
+    <!-- <div *ngIf="username | async">
+        Logged in as: {{ username }}
+      </div> -->
+    <app-layout></app-layout>
+}
+@else {
+    <app-login></app-login>
+}
+   
+
